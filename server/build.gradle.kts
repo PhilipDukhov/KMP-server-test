@@ -13,7 +13,6 @@ kotlin {
     jvm()
     sourceSets {
         val jvmMain by getting {
-            resources.srcDir("resources")
             dependencies {
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("io.ktor:ktor-server-netty:$ktorVersion")
@@ -22,12 +21,4 @@ kotlin {
             }
         }
     }
-}
-
-tasks.getByName<JavaExec>("run") {
-    main = "com.well.server.ApplicationKt"
-    val jvm by kotlin.targets.getting
-    val main: KotlinCompilation<KotlinCommonOptions> by jvm.compilations
-    val runtimeDependencies = (main as KotlinCompilationToRunnableFiles<KotlinCommonOptions>).runtimeDependencyFiles
-    classpath = files(main.output.allOutputs, runtimeDependencies)
 }
