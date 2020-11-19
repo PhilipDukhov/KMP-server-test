@@ -9,6 +9,10 @@ plugins {
 
 val ktorVersion = "1.4.0"
 
+application {
+    mainClassName = "io.ktor.server.netty.EngineMain"
+}
+
 kotlin {
     jvm {
         withJava()
