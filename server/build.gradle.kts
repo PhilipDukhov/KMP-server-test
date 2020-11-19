@@ -10,7 +10,9 @@ plugins {
 val ktorVersion = "1.4.0"
 
 kotlin {
-    jvm()
+    jvm {
+        withJava()
+    }
     sourceSets {
         val jvmMain by getting {
             dependencies {
@@ -19,6 +21,15 @@ kotlin {
                 implementation("ch.qos.logback:logback-classic:1.2.3")
                 implementation("io.ktor:ktor-websockets:$ktorVersion")
             }
+        }
+    }
+}
+
+
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "1.8"
         }
     }
 }
