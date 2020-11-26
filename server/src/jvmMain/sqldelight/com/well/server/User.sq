@@ -1,0 +1,34 @@
+CREATE TABLE IF NOT EXISTS  user(
+    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    createdDate REAL NOT NULL,
+
+    facebookId TEXT UNIQUE,
+    googleId TEXT UNIQUE
+);
+
+lastInsertId:
+SELECT LAST_INSERT_ID();
+
+getById:
+SELECT * FROM user WHERE id = ?;
+
+getByFacebookId:
+SELECT id FROM user WHERE facebookId = ?;
+
+getByGoogleId:
+SELECT id FROM user WHERE googleId = ?;
+
+insertFacebook:
+INSERT INTO user(firstName, lastName, createdDate, facebookId)
+VALUES (?, ?, 1000, ?);
+
+insertGoogle:
+INSERT INTO user(firstName, lastName, createdDate, googleId)
+VALUES (?, ?, GETDATE(), ?);
+
+insert:
+INSERT INTO user
+VALUES ?;
+

@@ -1,4 +1,3 @@
-include(":app")
 include(":server")
 rootProject.name = "My Application"
 
