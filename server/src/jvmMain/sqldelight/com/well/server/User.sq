@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS  user(
-    id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INTEGER NOT NULL PRIMARY KEY,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL,
     createdDate REAL NOT NULL,
 
-    facebookId TEXT UNIQUE,
-    googleId TEXT UNIQUE
+    facebookId TEXT,
+    googleId TEXT
 );
 
 lastInsertId:
@@ -21,12 +21,12 @@ getByGoogleId:
 SELECT id FROM user WHERE googleId = ?;
 
 insertFacebook:
-INSERT INTO user(firstName, lastName, createdDate, facebookId)
-VALUES (?, ?, 1000, ?);
+INSERT INTO user(id, firstName, lastName, createdDate, facebookId)
+VALUES (1, ?, ?, 1000, ?);
 
 insertGoogle:
-INSERT INTO user(firstName, lastName, createdDate, googleId)
-VALUES (?, ?, GETDATE(), ?);
+INSERT INTO user(id, firstName, lastName, createdDate, googleId)
+VALUES (1, ?, ?, 1000, ?);
 
 insert:
 INSERT INTO user
